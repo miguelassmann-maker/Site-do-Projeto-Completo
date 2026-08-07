@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini CRM</title>
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+
+    
+    <div class="bg-danger text-white p-4 d-flex justify-content-between align-items-center">
+        <div>
+            <h1 class="h3 mb-1">Mini CRM</h1>
+            <p class="mb-0 opacity-75">Sistema de cadastro de clientes</p>
+        </div>
+    </div>
+
+
+    
+    <div class="bg-white border-bottom p-3 d-flex gap-2 flex-wrap">
+        <button class="btn btn-outline-danger botaoMenu ativo" data-tela="home">Home</button>
+        <button class="btn btn-outline-danger botaoMenu" data-tela="cadastro">Cadastro</button>
+        <button class="btn btn-outline-danger botaoMenu" data-tela="consulta">Consulta</button>
+        <button class="btn btn-outline-danger botaoMenu" data-tela="relatorios">Relatórios</button>
+        <button class="btn btn-outline-danger botaoMenu" data-tela="auditoria">Auditoria</button>
+    </div>
+
+
+    
+    <div class="container-lg py-4">
+
+
+        
+        <section id="home" class="tela ativa">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2 class="text-danger">Relatório inicial</h2>
+                    <p class="text-muted mb-0">Veja como está o seu cadastro de clientes.</p>
+                </div>
+                <button class="btn btn-danger" id="botaoIrCadastro">Cadastrar cliente</button>
+            </div>
+
+            
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-md-3">
+                    <div class="card bg-danger text-white h-100">
+                        <div class="card-body">
+                            <p class="card-text">Total de clientes</p>
+                            <h3 id="totalClientes">0</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card bg-success text-white h-100">
+                        <div class="card-body">
+                            <p class="card-text">Clientes ativos</p>
+                            <h3 id="totalAtivos">0</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card bg-warning text-dark h-100">
+                        <div class="card-body">
+                            <p class="card-text">Clientes inativos</p>
+                            <h3 id="totalInativos">0</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card bg-secondary text-white h-100">
+                        <div class="card-body">
+                            <p class="card-text">Ações registradas</p>
+                            <h3 id="totalAuditorias">0</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <strong>Últimos clientes cadastrados</strong>
+                </div>
+                <div class="card-body" id="ultimosClientes"></div>
+            </div>
+
+        </section>
+
+
+        
+        <section id="cadastro" class="tela">
+
+            <h2 id="tituloCadastro" class="text-danger mb-1">Cadastro de clientes</h2>
+            <p class="text-muted mb-4">Preencha os dados abaixo para adicionar um novo cliente.</p>
+
+            <div class="card">
+                <div class="card-body">
+                    <form id="formularioCliente">
+                        <input type="hidden" id="idCliente">
+
+                        <div class="row g-3">
+
+                            <div class="col-md-8">
+                                <label class="form-label fw-bold">Nome completo *</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Digite o nome completo">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">CPF *</label>
+                                <input type="text" class="form-control" id="cpf" maxlength="14" placeholder="000.000.000-00">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Telefone</label>
+                                <input type="text" class="form-control" id="telefone" maxlength="15" placeholder="(00) 00000-0000">
+                            </div>
+
+                            <div class="col-md-8">
+                                <label class="form-label fw-bold">E-mail *</label>
+                                <input type="text" class="form-control" id="email" placeholder="cliente@email.com">
+                            </div>
+
+                            <div class="col-md-5">
+                                <label class="form-label fw-bold">Cidade</label>
+                                <input type="text" class="form-control" id="cidade" placeholder="Digite a cidade">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label fw-bold">Estado</label>
+                                <select class="form-select" id="estado">
+                                    <option value="">Selecione</option>
+                                    <option value="AC">AC</option><option value="AL">AL</option>
+                                    <option value="AP">AP</option><option value="AM">AM</option>
+                                    <option value="BA">BA</option><option value="CE">CE</option>
+                                    <option value="DF">DF</option><option value="ES">ES</option>
+                                    <option value="GO">GO</option><option value="MA">MA</option>
+                                    <option value="MT">MT</option><option value="MS">MS</option>
+                                    <option value="MG">MG</option><option value="PA">PA</option>
+                                    <option value="PB">PB</option><option value="PR">PR</option>
+                                    <option value="PE">PE</option><option value="PI">PI</option>
+                                    <option value="RJ">RJ</option><option value="RN">RN</option>
+                                    <option value="RS">RS</option><option value="RO">RO</option>
+                                    <option value="RR">RR</option><option value="SC">SC</option>
+                                    <option value="SP">SP</option><option value="SE">SE</option>
+                                    <option value="TO">TO</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label class="form-label fw-bold">Status</label>
+                                <select class="form-select" id="status">
+                                    <option value="Ativo">Ativo</option>
+                                    <option value="Inativo">Inativo</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label class="form-label fw-bold">Data de cadastro</label>
+                                <input type="text" class="form-control" id="dataCadastro" value="Automática" disabled>
+                            </div>
+
+                            <div class="col-12 d-flex gap-2 pt-2">
+                                <button type="submit" class="btn btn-danger" id="botaoSalvar">Cadastrar cliente</button>
+                                <button type="button" class="btn btn-secondary d-none" id="botaoCancelarEdicao">Cancelar alteração</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+
+        
+        <section id="consulta" class="tela">
+
+            <h2 class="text-danger mb-1">Consulta de clientes</h2>
+            <p class="text-muted mb-4">Pesquise e gerencie os clientes cadastrados.</p>
+
+            
+            <div class="card mb-3">
+                <div class="card-body d-flex gap-2 flex-wrap align-items-center">
+                    <select class="form-select" id="tipoPesquisa">
+                        <option value="nome">Pesquisar por nome</option>
+                        <option value="cpf">Pesquisar por CPF</option>
+                        <option value="cidade">Pesquisar por cidade</option>
+                    </select>
+                    <input type="text" class="form-control flex-grow-1" id="campoPesquisa" placeholder="Digite sua pesquisa">
+                    <button class="btn btn-danger" id="botaoPesquisar">Pesquisar</button>
+                    <button class="btn btn-secondary" id="botaoLimparPesquisa">Limpar</button>
+                </div>
+            </div>
+
+            
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-danger">
+                            <tr>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>Telefone</th>
+                                <th>E-mail</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="corpoTabelaClientes"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+
+        
+        <section id="relatorios" class="tela">
+
+            <h2 class="text-danger mb-1">Relatórios</h2>
+            <p class="text-muted mb-4">Veja os clientes organizados por status e data de cadastro.</p>
+
+            
+            <div class="d-flex gap-2 mb-3 flex-wrap">
+                <button class="btn btn-outline-danger botaoAba ativo" data-relatorio="geral">Relatório geral</button>
+                <button class="btn btn-outline-danger botaoAba" data-relatorio="ativos">Clientes ativos</button>
+                <button class="btn btn-outline-danger botaoAba" data-relatorio="inativos">Clientes inativos</button>
+                <button class="btn btn-outline-danger botaoAba" data-relatorio="data">Por data</button>
+            </div>
+
+            <div class="card">
+                <div class="card-body" id="conteudoRelatorio"></div>
+            </div>
+
+        </section>
+
+
+        
+        <section id="auditoria" class="tela">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2 class="text-danger mb-1">Auditoria do sistema</h2>
+                    <p class="text-muted mb-0">Todos os cadastros, alterações e exclusões aparecem aqui.</p>
+                </div>
+                <button class="btn btn-secondary" id="botaoLimparAuditoria">Limpar auditoria</button>
+            </div>
+
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-danger">
+                            <tr>
+                                <th>Data</th>
+                                <th>Tipo</th>
+                                <th>Cliente</th>
+                                <th>Descrição</th>
+                            </tr>
+                        </thead>
+                        <tbody id="corpoTabelaAuditoria"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+    
+    <div id="mensagemFlutuante" class="mensagemFlutuante">
+        <div class="alert shadow mb-0" id="alertaMensagem" role="alert"></div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

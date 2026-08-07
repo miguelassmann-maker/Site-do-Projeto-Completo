@@ -1,0 +1,57 @@
+
+
+.tela {
+    display: none;
+}
+
+
+.tela.ativa {
+    display: block;
+}
+
+
+.botaoMenu.ativo {
+    background-color: #dc3545;
+    color: white;
+}
+
+
+.botaoAba.ativo {
+    background-color: #dc3545;
+    color: white;
+}
+
+
+.status.Ativo {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+.status.Inativo {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+.mensagemFlutuante {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: none;
+}
+
+
+#tipoPesquisa {
+    max-width: 220px;
+}
+
